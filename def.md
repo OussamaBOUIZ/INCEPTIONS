@@ -1,0 +1,1 @@
+**TLS:** is a cryptographic protocol designed to provide communication security over a computer network. The protocol is widely used in applications such as email, instant messaging, but its use in securing HTTPS remains the most publicly visible.
