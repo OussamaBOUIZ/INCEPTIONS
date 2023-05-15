@@ -7,5 +7,5 @@
 4 - We need to remove the old container, first we need to get the container id, we do so through `docker ps`, then we run `docker stop <the-container-id>`, this stops the container, then we could remove it through `docker rm <the-container-id>`, we run a new container based on the built image, and we launch it 
 and we see that the app have changes. In future, we'll learn how to see code updates without needing to rebuild and start a new container every time we make change.
 
-5 - 
+5 - The todo app stores its data in a SQLite database at `/etc/todos/todo.db` in the container's filesystem.
 

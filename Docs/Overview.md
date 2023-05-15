@@ -17,3 +17,11 @@ Each instruction in a Dockerfile creates a **layer** in the image. When you chan
 ## Containers
 A container is a runnable instance of an image, which can be created, started, stopped, moved, or deleted using the Docker API or CLI. You can connect a container to one or more networks, attach storage to it, or even create a new image based on its current state.
 By default, a container is well isolated from other containers and its host machine. We can control how isolated a container's network, storage, or other underlying subsystems are from other containers or from other containers or from the host
+
+## Volumes
+Volumes provide the ability to connect specific filesystem paths of the containner back to the host machine. If a directory in the container is mounted
+
+
+
+## Definitions:
+**Mounted :** it refers to the process of making a filesystem available for access on an OS. It involves associating a directory with a filesystem located on a separate storage device, such as a hard disk.

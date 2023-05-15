@@ -1,3 +1,3 @@
 # comment
 FROM scratch
-RUN echo 'we are happy'
+RUN  echo 'we are happy' 
