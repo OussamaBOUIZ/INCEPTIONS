@@ -1,1 +1,3 @@
 **TLS:** is a cryptographic protocol designed to provide communication security over a computer network. The protocol is widely used in applications such as email, instant messaging, but its use in securing HTTPS remains the most publicly visible.
+
+**Mounted :** it refers to the process of making a filesystem available for access on an OS. It involves associating a directory with a filesystem located on a separate storage device, such as a hard disk.

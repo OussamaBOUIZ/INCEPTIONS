@@ -14,7 +14,12 @@ A **docker-network** for enable *containers* to connect.
 
 ### NGINX Service:
 The *Nginx container* must be the only entrypoint into our *infrastructure* via the port 443 only.
-
+In order of this Service to be Up and running we need:
+1 - Nginx binary, which handles incoming HTTP requests and serves web content.
+2 - Configuration files: Nginx relies on configuration files to determine how it should handle incoming requests and manage varous aspects of its behavior.
+3 - Web Content (HTML, CSS, JS and media files).
+4 - Network settings to allow inbound HTTP traffic.
+5 - SSL certificate in order to serve content securly (optional)
 ### WordPress Service:
 In the WordPress DB, there must be two users, one of them being the admin. We have to configure our domain name so it points to our local IP address. The domain name must be login.42.fr.
 
