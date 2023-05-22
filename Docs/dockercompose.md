@@ -1,1 +1,3 @@
-Docker compose is built in top of docker engine 
+In the fact of an application won't be consisting of one sole container, the most frequent case is having a multi-container application. In this regards, it would be better if we can set up and start all containers from one place. This is what **Docker Compose** do.
+
+With **Docker Compose** we can define **multi-container applications**. Through a YAML file that is located on the root of our project we could define our services.
