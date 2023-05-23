@@ -1,0 +1,29 @@
+services:
+  nginx:
+    build:
+      context: ./requirements/nginx/
+      image:  nginx-service-image
+      container_name: nginx-service
+      network: main-network
+    ports:
+      -443:443
+  wordpress:
+    build:
+      context: ./requirements/wordpress
+      image: wordpress-service-image
+      container_name: wordpress-service
+      volume:
+        - wp-volume:~/obouizga/data/:/app/db/
+      network: main-network
+  mariadb:
+    build:
+      context: ./requirements/mariadb
+      image:  mariadb-service-image
+      container_name: mariadb-service
+      volume:
+        - mariadb-volume:~/obouizga/data:/app/db/
+      network: main-network
+networks:
+  main-network
+env_file:
+  - ./.env
