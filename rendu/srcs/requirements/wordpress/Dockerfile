@@ -4,4 +4,5 @@ RUN apt-get install vim php-fpm php-mysql -y && apt-get install curl -y
 WORKDIR /app
 COPY ./script.sh /app/script.sh
 RUN chmod +x /app/script.sh
+EXPOSE 9000
 CMD ["/app/script.sh"]

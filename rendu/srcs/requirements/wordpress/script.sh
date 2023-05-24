@@ -1,4 +1,13 @@
 #!/bin/sh
+DOMAIN_NAME=obouizga.42.fr
+WP_TITLE=personal_blog
+WP_ADMIN_USR=obouizga
+WP_ADMIN_PWD=obouizgawp
+WP_ADMIN_EMAIL=obouizga@wp.fr
+WP_USR=testusr
+WP_EMAIL=testusr@wp.fr
+WP_PWD=test13
+
 mkdir -p /var/www/html
 
 cd /var/www/html
