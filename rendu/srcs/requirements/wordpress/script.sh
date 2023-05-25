@@ -1,12 +1,5 @@
 #!/bin/sh
-DOMAIN_NAME=obouizga.42.fr
-WP_TITLE=personal_blog
-WP_ADMIN_USR=obouizga
-WP_ADMIN_PWD=obouizgawp
-WP_ADMIN_EMAIL=obouizga@wp.fr
-WP_USR=testusr
-WP_EMAIL=testusr@wp.fr
-WP_PWD=test13
+
 
 mkdir -p /var/www/html
 
@@ -24,9 +17,9 @@ wp core download --allow-root
 
 mv /var/www/html/wp-config-sample.php /var/www/html/wp-config.php
 
-sed -i -r "s/'database_name_here'/'OUSSAMADB'/1" wp-config.php
-sed -i -r "s/'username_here'/'obouizga'/1" wp-config.php
-sed -i -r "s/'password_here'/'mariadbpwd'/1" wp-config.php
+sed -i -r "s/'database_name_here'/'$DB_NAME'/1" wp-config.php
+sed -i -r "s/'username_here'/'$DB_USER'/1" wp-config.php
+sed -i -r "s/'password_here'/'$DB_PWD'/1" wp-config.php
 sed -i -r "s/localhost/mariadb/1" wp-config.php 
 
 wp core install --url=$DOMAIN_NAME/ --title=$WP_TITLE --admin_user=$WP_ADMIN_USR \

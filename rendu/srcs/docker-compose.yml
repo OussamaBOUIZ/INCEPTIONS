@@ -1,29 +1,53 @@
+version: "3"
 services:
   nginx:
     build:
       context: ./requirements/nginx/
-      image:  nginx-service-image
-      container_name: nginx-service
-      network: main-network
+    image:  nginx
+    volumes:
+      - wp-volume:/var/www/html
+    networks:
+      - main-network
     ports:
-      -443:443
+      - 443:443
+    env_file:
+      - .env
   wordpress:
     build:
-      context: ./requirements/wordpress
-      image: wordpress-service-image
-      container_name: wordpress-service
-      volume:
-        - wp-volume:~/obouizga/data/:/app/db/
-      network: main-network
+      context: ./requirements/wordpress/
+    image: wordpress
+    volumes:
+      - wp-volume:/var/www/html
+    networks: 
+      - main-network
+    expose:
+      - 9000
+    env_file:
+      - .env
   mariadb:
     build:
-      context: ./requirements/mariadb
-      image:  mariadb-service-image
-      container_name: mariadb-service
-      volume:
-        - mariadb-volume:~/obouizga/data:/app/db/
-      network: main-network
+      context: ./requirements/mariadb/
+    image:  mariadb
+    volumes:
+      - mariadb-volume:/var/lib/mysql/
+    networks:
+      - main-network
+    expose:
+      - 3306
+    env_file:
+      - .env
 networks:
-  main-network
-env_file:
-  - ./.env
+  main-network:
+volumes:
+    wp-volume:
+      driver: local
+      driver_opts:
+        device: ~/obouizga/data/wordpress
+        o: bind
+        type: none
+    mariadb-volume:
+      driver: local
+      driver_opts:
+        device: ~/obouizga/data/mysql
+        o: bind
+        type: none

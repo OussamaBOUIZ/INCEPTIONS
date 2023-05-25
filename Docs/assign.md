@@ -31,3 +31,7 @@ The *latest* tag is prohibited
 
 ### .env file:
 It is strongly recomended to use the *.env* file to store environment variables which are indeed mandatory. The *.env* file should be located in the `srcs/` folder
+
+
+
+The Nginx service, exposed on port 443, serves as the entrypoint to the infrastructure. Requests received by Nginx can be forwarded to the WordPress service, which handles the dynamic content, while the WordPress service communicates with the MariaDB service to store and retrieve data.
