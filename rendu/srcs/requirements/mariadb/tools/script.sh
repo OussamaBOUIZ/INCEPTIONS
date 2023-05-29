@@ -16,5 +16,5 @@ echo "GRANT ALL PRIVILEGES ON $DB_NAME.* TO '$DB_USER'@'%' ;" >> db.sql
 echo "FLUSH PRIVILEGES;" >> db.sql
 
 mysql < db.sql
-service mysql stop
-mysqld
+# service mysql stop
+mysqld && tail -f /dev/null
