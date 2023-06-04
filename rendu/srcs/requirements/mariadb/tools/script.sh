@@ -17,4 +17,4 @@ echo "FLUSH PRIVILEGES;" >> db.sql
 
 mysql < db.sql
 # service mysql stop
-mysqld && tail -f /dev/null
+mysqld

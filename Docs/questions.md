@@ -1,3 +1,4 @@
+# MariaDB :
 ## what is the relation between mysql and mariadb ?
 MySQL and MariaDB share common origins, In 2009 one of the original creators of MySQL forked MySQL to create a new RDBMS called MariaDB. MariaDB is designed to be highly-compatible with MySQL, applications and tools developed for MySQL can work seamlessly with MariaDB without requiring significant modifications.
 Even though MariaDB firstly aimed to be a drop-in replacement for MySQL, it has diverged over time and introduced new features and optimizations.
@@ -26,6 +27,7 @@ when creating a user we type this command in mysql
 
 After doing this, we have to `FLUSH PRIVILEGES`, to reload the mysql privilege table after making changes to user accounts. It tells the server to re-read the grant tables from disk. Generally it ensures that the changes are applied and take effect immediately.
 
+# Nginx config file:
 ## Why does nginx need a config file ?
 A configuration file describe for Nginx how it should handle incoming requests and serve content.
 `listen 443 ssl` : listen on port 443, the ssl option indicates that SSL/TLS encryption should be used for these connections.
@@ -38,4 +40,32 @@ As we see we did not specify the address, so nginx will listen an all available 
 It is important to ensure that the certificate files are obtained from a trusted CA or properly self-signed if used for testing or interna purposes.
 
 ### Why does nginx need a SSL certficate for encryption ?
-The cert allows the server to prove its identity to the client. It contains informations about the server. When the client connects to the server, it verifies the authencity of the certificate to ensure it is communicating with the intended server and not an imposter
+The cert allows the server to prove its identity to the client. It contains informations about the server. When the client connects to the server, it verifies the authencity of the certificate to ensure it is communicating with the intended server and not an imposter.
+
+## what bout the ssl_protocols ?
+This points to the SSL/TLS protocols that Nginx should support for secure connections. By passing the TLSv1.2 to this directive we tell Nginx to only accept secure connections using the TLS version 1.2 protocol. Any connections attempted with other SSL/TLS versions will be rejected.
+
+## What does the index directive stand for ?
+we rely on this directive to specify the default file that should be served when a directory is accessed. The directory where nginx look for this default file is specified by the `root` directive.
+
+## What about the location directive ?
+It tells nginx how it should process requests for specific URIs.
+
+
+### what does the try_files directive do ?
+This is used for handling fallback scenarios when a requested file or resource is not found.
+
+### fastcgi_pass
+This is used to configure nginx to pass requests to a FastCGI server for processing dynamic content, such as PHP scripts, and `include fastcgi_params` includes a file with FastCGI-specific parameters. this file contains predefined configurations for FastCGI-related parameters such as SCRIPT_FILENAME, REQUEST_METHOD ...
+
+`fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name`:
+in this line we used the fastcgi_param directive to set a parameter for the FastCGI server. In this case it sets the SCRIPT_FILENAME parameter, which is a common FastCGI parameter that specifies the path to the script file that should be executed.
+`$document_root`: this is an nginx variable that represents the root directory for the current server block. `fastcgi_script_name` this is another nginx variable that represents the path of the requested script within the current location.
+
+## Script:
+the command openssl stands for Open secure socket layer. It provides cryptographic functions and protocols, including SSL and TLS. It's used as well for generating self-signed certificates. `req` as an argument indicates the certificate signing request (CSR) functionality of OpenSSL. By adding `-x509` option with the `req` command, you instruct OpenSSL to generate a self-signed X.509 cert directly from the provided information, without the need for a seperate signing process. The `-nodes` stands for "no DES" (Data Encryption Standard), it tells OpenSSL not to encrypt the private key associated with the self-signed cert. Including the `-nodes` option can be useful in situaltions where you want the private key to be accessible without requiring a passphrase each time it is used. `-out` specifies the output file for the self-signed cert. Meanwhile the `keyout` specifies the output file for the private key associated with the certificate. The `-subj` is used to define the subject field of the certificate. The subject field contains information such as the Common Name, Orgranization, Country...etc.
+
+`nginx -g daemon off`
+`nginx` : This is the command to start NGINX.
+`-g` allows you to pass a configuration directive directly from the command line. 
+`daemon off` is the directive being passed.
