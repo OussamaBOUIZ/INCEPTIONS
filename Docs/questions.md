@@ -69,3 +69,25 @@ the command openssl stands for Open secure socket layer. It provides cryptograph
 `nginx` : This is the command to start NGINX.
 `-g` allows you to pass a configuration directive directly from the command line. 
 `daemon off` is the directive being passed.
+With this we start nginx in the foreground. This can be useful for debugging or testing purposes when you want to see NGINX's output and logs direclty on the terminal.
+Some of the other reasons to run NGINX in the foreground :
+1 - When running NGINX within a containerized env, it is common to run NGINX  in the foreground. This allows the container runtime to monitor the main NGINX process and manage it effectively.
+2 - Some service managers or process supervisors, such as **systemd**, expect processes to run the foreground.
+It's important to note that running NGINX in the foreground may not be suitable for production environments, as it requires a terminal session to be kept open and can prevent NGINX from runningn as a background daemon. In prod, it's generally recommended to run NGINX  as a background process and utilize appropriate process management tools and log monitoring mechanisms.
+
+## Wordpress:
+### Why /var/www/html ?
+In many server configs, the /var/www/html dir serves as the default document root for web servers like Apache or NGINX. The document root is the dir where the web server looks for files to serve.
+When curl-ing we used the -O option to ensure that the downloaded file is saved with the same name as the remote file.
+
+## wp core download --allow-root
+wp invoke the WP-CLI tool.
+core download: this subcommand that instructs WP-CLI to download the Wordpress core files, those are essential files that make up the wordpress software itself. with `--allow-root` we allow the command to be executed as the root user or with administratvie privileges. If we omit the `--allow-root`, WP-CLI willl perform permission checks to ensure that the command is not executed with superuser privileges, and we will encounter an error message, indicating that the command was unable to validate the installation as a WordPress site.
+
+## Why shall we name it wp-config.php:
+Wordpress expects the main config file to be named  wp-config.php.
+let's break down the following command:
+`sed -i -r "s/'database_name_here'/'$DB_NAME'/1" wp-config.php`
+`sed`: stream editing.
+`-i`: take in place 
+## Who invented curl ?
