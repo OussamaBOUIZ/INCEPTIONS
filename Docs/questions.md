@@ -89,5 +89,14 @@ Wordpress expects the main config file to be named  wp-config.php.
 let's break down the following command:
 `sed -i -r "s/'database_name_here'/'$DB_NAME'/1" wp-config.php`
 `sed`: stream editing.
-`-i`: take in place 
+`-i`: take in place, refers to the ability to modify a file directly without creating a separate output file
+`-r`:The `-r` option enables extended regular expression syntax.
+
+## How does wp core install works ?
+this automates the installation process by creating the necessary database tables, generating a config file and setting up the initial site settings.
+
+## Why /etc/php/7.3/fpm/poo.d/www.conf:
+this file contains configuration settings for a PHP-FPM pool.
+
+## What is PHP-FPM ?
 ## Who invented curl ?
