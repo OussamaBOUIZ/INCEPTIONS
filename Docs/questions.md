@@ -99,4 +99,11 @@ this automates the installation process by creating the necessary database table
 this file contains configuration settings for a PHP-FPM pool.
 
 ## What is PHP-FPM ?
+This is a PHP FastCGI implementation that provides a way to handle PHP requests in a more efficient and scalable manner.
+
+*Using the absolute path to execute a binary directly is suitable for standalone applications or scripts that do not require service management capabilities. On the other hand, the `service` command is more appropriate for managing system services, providing higher-level functionalities and abstraction of the underlying service management system.*
 ## Who invented curl ?
+The original author and lead developer is the Swedish developer Daniel Stenberg, who created cURL
+
+## Why in a multi-containers app we run our services in foreground ?
+Debugging , development, monitoring,
